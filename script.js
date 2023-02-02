@@ -6,6 +6,7 @@ const countryEl = document.getElementById('country');
 const weatherForecastEl = document.getElementById('weather-forecast');
 const currentTempEl = document.getElementById('current-temp');
 
+
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -44,7 +45,7 @@ function getWeatherData () {
 
 function showWeatherData (data){
     let {humidity, pressure, sunrise, sunset, wind_speed} = data.current;
-
+    console.log("current",data.current)
     timezone.innerHTML = data.timezone;
     countryEl.innerHTML = data.lat + 'N ' + data.lon+'E'
 
@@ -80,7 +81,6 @@ function showWeatherData (data){
             <img src="http://openweathermap.org/img/wn//${day.weather[0].icon}@4x.png" alt="weather icon" class="w-icon">
             <div class="other">
                 <div class="day">${window.moment(day.dt*1000).format('dddd')}</div>
-                <div class="temp">Night - ${day.temp.night}&#176;C</div>
                 <div class="temp">Day - ${day.temp.day}&#176;C</div>
             </div>
             
@@ -90,7 +90,6 @@ function showWeatherData (data){
             <div class="weather-forecast-item">
                 <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
                 <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather icon" class="w-icon">
-                <div class="temp">Night - ${day.temp.night}&#176;C</div>
                 <div class="temp">Day - ${day.temp.day}&#176;C</div>
             </div>
             
